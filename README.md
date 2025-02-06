@@ -11,3 +11,8 @@ This is a template for a full-stack application using:
 1. Clone this repository
 2. Make sure you have Docker and Docker Compose installed
 3. Run the following commands:
+
+```bash
+docker compose build
+docker compose up -d
+```
