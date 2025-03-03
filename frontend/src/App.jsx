@@ -8,7 +8,7 @@ function App() {
   const [backendMessage, setBackendMessage] = useState('Loading...')
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/v1/health')
+    fetch('/api/v1/health')
       .then(response => response.json())
       .then(data => setBackendMessage(data.message))
       .catch(error => setBackendMessage('Error connecting to backend'))
