@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # check=error=true
 
-# This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
+# This Dockerfile is designed for production, not development.
 # docker build -t app .
 # docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name app app
 
@@ -24,12 +24,7 @@ COPY Gemfile Gemfile.lock ./
 # Install gems
 RUN bundle install
 
-# Create a simple entrypoint script
-RUN echo '#!/bin/bash\nrm -f tmp/pids/server.pid\nexec "$@"' > /usr/bin/entrypoint.sh && \
-    chmod +x /usr/bin/entrypoint.sh
-
 # Copy the rest of the application
 COPY . .
 
-ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3001"]
